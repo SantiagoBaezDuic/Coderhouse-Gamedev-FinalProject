@@ -10,13 +10,15 @@ public class EnemyBehaviour : MonoBehaviour
 
     private Vector3 playerDir;
 
-    private Transform playerTransform;
-
     private Collider playerCol;
 
-    private void DetectPlayer()
+    protected bool DetectPlayer(GameObject player)
     {
+        bool playerHit = false;
+
         RaycastHit hit;
+
+        Transform playerTransform = player.GetComponent<Transform>();
 
         playerDir = playerTransform.position - transform.position;
 
@@ -24,13 +26,24 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (hit.collider == playerCol)
         {
+            playerHit = true;
         }
+
+        return playerHit;
+    }
+
+    protected void LookAtPlayer(GameObject player)
+    {
+        Transform playerTransform = player.GetComponent<Transform>();
+
+        playerDir = playerTransform.position - transform.position;
+
+        transform.forward = playerDir.normalized;
     }
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = player.transform;
         playerCol = player.GetComponent<Collider>();
     }
 
@@ -38,7 +51,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(distanceToPlayer <= 15f)
         {
-            DetectPlayer();
+            DetectPlayer(player);
         }
     }
 }

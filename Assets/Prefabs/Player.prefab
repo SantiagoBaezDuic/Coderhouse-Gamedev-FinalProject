@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385e8b8d2dc0eaa45ad8d3c539b67101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  deathUI: {fileID: 0}
   currentHealth: 0
 --- !u!114 &67730365423539738
 MonoBehaviour:
@@ -2000,7 +2000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 67730365423539729}
-  forceToJump: 250
+  forceToJump: 5
   speed: 5
   maxJumpCounter: 1
   groundChecker: {fileID: 67730366155501011}
@@ -2047,6 +2047,7 @@ MonoBehaviour:
   hookSpawnPoint: {fileID: 67730366575894251}
   maxDist: 13
   amount: 10
+  hookSprite: {fileID: 0}
   isTraveling: 0
   cooldown: 1
   hookCharges: 1

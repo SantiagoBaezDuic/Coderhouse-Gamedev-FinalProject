@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HookShot : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class HookShot : MonoBehaviour
     [SerializeField] private float maxDist = 13f;
 
     [SerializeField] private float amount = 10f;
+
+    [SerializeField] private RawImage hookSprite;
 
     public bool isTraveling = false;
 
@@ -87,5 +90,13 @@ public class HookShot : MonoBehaviour
         }
 
         GameManager.instance.currentHookCooldown = _cooldownCounter;
+
+        if (canShoot)
+        {
+            hookSprite.color = Color.white;
+        } else
+        {
+            hookSprite.color = Color.red;
+        }
     }
 }

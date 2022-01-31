@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 2700492475852282912}
   - component: {fileID: 2700492475852282919}
   - component: {fileID: 2700492475852282915}
-  - component: {fileID: 2700492475852282940}
+  - component: {fileID: 4927012316458699989}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -276,7 +276,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2700492475852282940
+--- !u!114 &4927012316458699989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c4d50986f07ef41a370f8147b4f83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 13fb2677a4229dc499609c3560b0dabc, type: 2}
   source: {fileID: 2700492474444643025}
   clip: {fileID: 8300000, guid: 5d3c13cebbd90264b9b98aa33167f47f, type: 3}
   volume: 0.5

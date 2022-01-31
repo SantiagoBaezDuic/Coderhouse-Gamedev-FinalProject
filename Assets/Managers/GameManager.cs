@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public int currentPlayerHealth;
 
+    public int maxPlayerHealth = 100;
+
     public float currentHookCooldown;
 
     public int currentCoinsCollected = 0;
@@ -29,5 +31,10 @@ public class GameManager : MonoBehaviour
                 DontDestroyOnLoad(this);
             }
         }
+    }
+
+    private void Start()
+    {
+        currentPlayerHealth = maxPlayerHealth;
     }
 }

@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    private int maxHealth;
+
+    [SerializeField] private GameObject deathUI;
 
     public int currentHealth;
 
@@ -14,7 +16,9 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = GameManager.instance.maxPlayerHealth;
         currentHealth = maxHealth;
+        deathUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,12 +32,14 @@ public class PlayerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             _counter += Time.deltaTime;
-
-            Debug.Log("Moriste");
+            deathUI.SetActive(true);
+            Time.timeScale = 0.2f;
             
-            if(_counter >= 3f)
+            if(_counter >= 1f)
             {
-                SceneManager.LoadScene("SampleScene");
+                deathUI.SetActive(false);
+                SceneManager.LoadScene(1);
+                Time.timeScale = 1f;
                 _counter = 0;
             }
         }

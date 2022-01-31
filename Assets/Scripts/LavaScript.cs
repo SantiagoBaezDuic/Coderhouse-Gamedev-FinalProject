@@ -8,6 +8,8 @@ public class LavaScript : MonoBehaviour
 
     [SerializeField] private Collider player;
 
+    [SerializeField] private AudioClip hurtSound;
+
     private float _counter;
 
     [SerializeField] private int Damage = 10;
@@ -24,6 +26,8 @@ public class LavaScript : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        AudioSource source = player.GetComponent<AudioSource>();
+
         _counter += Time.deltaTime;
         if (other == player && _counter >= lavaTick)
         {
@@ -35,21 +39,10 @@ public class LavaScript : MonoBehaviour
             } else
             {
                 playerRef.currentHealth -= Damage;
+                source.PlayOneShot(hurtSound);
             }
        
             _counter = 0;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
