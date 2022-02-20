@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GoldCoin : MonoBehaviour
+public class GoldCoin : Pickupable
 {
     [SerializeField] private ItemData data;
 
@@ -28,7 +28,7 @@ public class GoldCoin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other == playerCol)
+        if (other == playerCol)
         {
             source.PlayOneShot(clip);
 
@@ -37,8 +37,6 @@ public class GoldCoin : MonoBehaviour
             var counterRef = textDisplay.GetComponent<CoinCounter>();
 
             counterRef.counter += data.value;
-
-            //GameManager.instance.currentCoinsCollected = counterRef.counter;
         }
     }
 }

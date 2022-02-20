@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class FinishMat : MonoBehaviour
 {
@@ -9,13 +11,7 @@ public class FinishMat : MonoBehaviour
 
     private Collider playerCol;
 
-    [SerializeField] private GameObject controller;
-
-    [SerializeField] private AudioSource source;
-
-    [SerializeField] private AudioClip clip;
-
-    private bool won;
+    public UnityEvent<bool> onMatFinish;
 
     private bool startCounter = false;
 
@@ -33,12 +29,7 @@ public class FinishMat : MonoBehaviour
             Debug.Log("Ganaste!");
             Debug.Log($"Tiempo total: {_totalCounter} segundos");
             Debug.Log($"Recogiste {counterRef.counter} monedas!");
-            controller.SetActive(true);
-            if (!won)
-            {
-                source.PlayOneShot(clip);
-                won = true;
-            }
+            onMatFinish?.Invoke(true);
         }
     }
 
@@ -52,6 +43,8 @@ public class FinishMat : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerCol = player.GetComponent<Collider>();
+        int levelIndex = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log("El objetivo de monedas de este nivel es de " + GameManager.instance.coinGoals[levelIndex]);
     }
 
     // Update is called once per frame

@@ -18,9 +18,11 @@ public class GameManager : MonoBehaviour
 
     public bool isHookOnScene;
 
+    public int[] coinGoals;
+
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
         } else
@@ -31,6 +33,12 @@ public class GameManager : MonoBehaviour
                 DontDestroyOnLoad(this);
             }
         }
+
+        coinGoals = new int[10];
+
+        coinGoals[0] = 0;
+        coinGoals[1] = 25;
+        coinGoals[2] = 30;
     }
 
     private void Start()

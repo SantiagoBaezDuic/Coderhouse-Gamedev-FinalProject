@@ -5,4 +5,5 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     public int value;
+    public bool special;
 }

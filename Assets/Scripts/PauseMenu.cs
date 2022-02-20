@@ -9,9 +9,18 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject pauseMenuUI;
 
+    [SerializeField] private GameObject optionsMenuUI;
+
+    private void Start()
+    {
+        pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
+    }
+
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
         Cursor.visible = false;
@@ -31,6 +40,18 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+    }
+
+    public void Options()
+    {
+        optionsMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
+    }
+
+    public void Back()
+    {
+        optionsMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
     }
 
     public void QuitGame()
