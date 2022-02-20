@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7356505690676041529}
   - component: {fileID: 7356505690676041528}
   - component: {fileID: 2498620955719399501}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: MovingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,6 +114,7 @@ MonoBehaviour:
   onTimeMove: 3
   MovingTime: 9
   speed: 1
+  rb: {fileID: 0}
 --- !u!54 &2498620955719399501
 Rigidbody:
   m_ObjectHideFlags: 0

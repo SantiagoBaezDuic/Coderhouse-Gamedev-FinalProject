@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1654880303053020133}
   - component: {fileID: 1654880303053020134}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 1654880303149275955}
   - component: {fileID: 1654880303149275954}
   - component: {fileID: 1654880303149275953}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 1654880303700328624}
   - component: {fileID: 1654880303700328631}
   - component: {fileID: 1654880303700328630}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 1654880304203306935}
   - component: {fileID: 1654880304203306934}
   - component: {fileID: 1654880304203306930}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,6 +427,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lavaTick: 1
   player: {fileID: 0}
+  hurtSound: {fileID: 0}
+  Damage: 10
 --- !u!1 &1654880304242372789
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1654880304242372790}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Lava Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +478,7 @@ GameObject:
   - component: {fileID: 1654880304246684209}
   - component: {fileID: 1654880304246684208}
   - component: {fileID: 1654880304246684215}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +573,7 @@ GameObject:
   - component: {fileID: 1654880304566894176}
   - component: {fileID: 1654880304566894183}
   - component: {fileID: 1654880304566894182}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +668,7 @@ GameObject:
   - component: {fileID: 7563106597554409650}
   - component: {fileID: 6073193938516976325}
   - component: {fileID: 8756737699980791880}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

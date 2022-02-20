@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5935713130790743659}
   - component: {fileID: 5935713130790743653}
   - component: {fileID: 5935713130790743658}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Impulser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpTime: 0.5
   jumpForce: 700
-  source: {fileID: 0}
-  clip: {fileID: 0}
+  source: {fileID: 6955389676893845429}
+  clip: {fileID: 8300000, guid: bf67a88d363ef4145b86cc0b0c68ada8, type: 3}
 --- !u!64 &5935713130790743658
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 1819201377566133532}
   - component: {fileID: 100301350253889050}
   - component: {fileID: 1256210826923723211}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6596797481099951420}
   - component: {fileID: 6955389676893845429}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}

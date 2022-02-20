@@ -19,6 +19,10 @@ public class FinishMat : MonoBehaviour
 
     [SerializeField] private Text textDisplay;
 
+    [SerializeField] private GameObject portal;
+
+    private int levelIndex;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider == playerCol)
@@ -30,11 +34,19 @@ public class FinishMat : MonoBehaviour
             Debug.Log($"Tiempo total: {_totalCounter} segundos");
             Debug.Log($"Recogiste {counterRef.counter} monedas!");
             onMatFinish?.Invoke(true);
+
+            
+            if (counterRef.counter >= GameManager.instance.coinGoals[levelIndex])
+            {
+                portal.SetActive(true);
+            }
         }
     }
 
     private void Awake()
     {
+        portal.SetActive(false);
+        levelIndex = SceneManager.GetActiveScene().buildIndex;
         startCounter = true;
     }
 
