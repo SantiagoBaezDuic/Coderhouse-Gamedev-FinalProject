@@ -15854,13 +15854,10 @@ PrefabInstance:
       propertyPath: checkDistance
       value: 0.1
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 67730365423539738, guid: 869274286dd2fe249a2e452333f344c7, type: 3}
       propertyPath: groundMask.m_Bits
       value: 1288
       objectReference: {fileID: 0}
-=======
->>>>>>> parent of 2cf66a6 (First commit after picking the project back up)
     - target: {fileID: 67730365564066128, guid: 869274286dd2fe249a2e452333f344c7, type: 3}
       propertyPath: m_Layer
       value: 7
