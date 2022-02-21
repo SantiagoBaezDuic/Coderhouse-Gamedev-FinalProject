@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         coinGoals[0] = 0;
         coinGoals[1] = 25;
-        coinGoals[2] = 30;
+        coinGoals[2] = 15;
     }
 
     private void Start()
