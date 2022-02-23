@@ -23,19 +23,26 @@ public class FinishMat : MonoBehaviour
 
     private int levelIndex;
 
+    private bool alreadyFinished = false;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider == playerCol)
         {
             var counterRef = textDisplay.GetComponent<CoinCounter>();
 
-            startCounter = false;
-            Debug.Log("Ganaste!");
-            Debug.Log($"Tiempo total: {_totalCounter} segundos");
-            Debug.Log($"Recogiste {counterRef.counter} monedas!");
-            onMatFinish?.Invoke(true);
-
-            
+            if (!alreadyFinished)
+            {
+                startCounter = false;
+                Debug.Log("Ganaste!");
+                Debug.Log($"Tiempo total: {_totalCounter} segundos");
+                Debug.Log($"Recogiste {counterRef.counter} monedas!");
+                onMatFinish?.Invoke(true);
+                alreadyFinished = true;
+                GameManager.instance.totalCoins += counterRef.counter;
+                GameManager.instance.totalTime += _totalCounter;
+            }
+         
             if (counterRef.counter >= GameManager.instance.coinGoals[levelIndex])
             {
                 portal.SetActive(true);
@@ -50,7 +57,6 @@ public class FinishMat : MonoBehaviour
         startCounter = true;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -59,7 +65,6 @@ public class FinishMat : MonoBehaviour
         Debug.Log("El objetivo de monedas de este nivel es de " + GameManager.instance.coinGoals[levelIndex]);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (startCounter)

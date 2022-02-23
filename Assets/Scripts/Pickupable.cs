@@ -14,8 +14,16 @@ public class Pickupable : MonoBehaviour
         counterRef = textDisplay.GetComponent<CoinCounter>();
     }
 
-    public void onPickup()
+    public void onPickup(AudioSource source, ItemData data)
     {
+        GameObject textDisplay = GameObject.FindGameObjectWithTag("CoinCounter");
+
+        var counterRef = textDisplay.GetComponent<CoinCounter>();
+
+        counterRef.counter += data.value;
+
+        source.Play();
+
         Destroy(gameObject);
     }
 }

@@ -37,8 +37,10 @@ public class PlayerHealth : MonoBehaviour
             
             if(_counter >= 1f)
             {
+                int activeScene = SceneManager.GetActiveScene().buildIndex;
+
                 deathUI.SetActive(false);
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(activeScene);
                 Time.timeScale = 1f;
                 _counter = 0;
             }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class FinalPortal : MonoBehaviour
 {
@@ -11,11 +12,16 @@ public class FinalPortal : MonoBehaviour
 
     private int activeScene;
 
+    [SerializeField] private TextMeshPro coins;
+
+    [SerializeField] private TextMeshPro time;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other == playerCol)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Application.Quit();
         }
     }
 
@@ -24,5 +30,12 @@ public class FinalPortal : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerCol = player.GetComponent<Collider>();
         activeScene = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    private void Update()
+    {
+        coins.text = GameManager.instance.totalCoins.ToString() + " coins";
+
+        time.text = GameManager.instance.totalTime.ToString() + " seconds";
     }
 }

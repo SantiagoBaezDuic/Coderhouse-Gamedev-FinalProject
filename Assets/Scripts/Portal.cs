@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
@@ -10,11 +11,21 @@ public class Portal : MonoBehaviour
 
     [SerializeField] private GameObject loadCamera;
 
+    [SerializeField] private bool nextLevel;
+
     private void OnTriggerEnter(Collider other)
     {
+
         if (other == playerCol)
         {
-            player.transform.position = loadCamera.transform.position;
+            if (nextLevel)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            } 
+            else
+            {
+                player.transform.position = loadCamera.transform.position;
+            }
         }
     }
 

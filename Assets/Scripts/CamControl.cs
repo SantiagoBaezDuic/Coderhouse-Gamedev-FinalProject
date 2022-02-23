@@ -77,8 +77,8 @@ public class CamControl : MonoBehaviour
         {
             lastCamera = currentCamera;
             orbitalCam.SetActive(false);
-            shoulderCam.SetActive(true);
-            freeCam.SetActive(false);
+            shoulderCam.SetActive(false);
+            freeCam.SetActive(true);
             currentCamera = Cameras.shoulder;
         }
 
@@ -91,11 +91,11 @@ public class CamControl : MonoBehaviour
                 freeCam.SetActive(false);
                 currentCamera = lastCamera;
             }
-            else if (lastCamera == Cameras.free)
+            else if (lastCamera == Cameras.shoulder)
             {
                 orbitalCam.SetActive(false);
-                shoulderCam.SetActive(false);
-                freeCam.SetActive(true);
+                shoulderCam.SetActive(true);
+                freeCam.SetActive(false);
                 currentCamera = lastCamera;
             }
         }

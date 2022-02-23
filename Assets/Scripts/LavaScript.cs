@@ -14,26 +14,14 @@ public class LavaScript : MonoBehaviour
 
     [SerializeField] private int Damage = 10;
 
-    [SerializeField] private GameObject lavaMaskVFX;
-
-    private void Awake()
-    {
-        lavaMaskVFX.SetActive(false);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         _counter = 0;
-        if(other == player)
-        {
-            lavaMaskVFX.SetActive(true);
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         _counter = 0;
-        lavaMaskVFX.SetActive(false);
     }
 
     private void OnTriggerStay(Collider other)

@@ -21,7 +21,15 @@ public class Hook : MonoBehaviour
         if(other != playerCol)
         {
             startCounter = true;
-            stopMoving = true;
+
+            if (other.CompareTag("Hookable"))
+            {
+                GameManager.instance.isHookOnScene = false;
+                Destroy(gameObject);
+            } else
+            {
+                stopMoving = true;
+            }
         }
     }
 
@@ -32,12 +40,11 @@ public class Hook : MonoBehaviour
         GameManager.instance.isHookOnScene = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!stopMoving)
         {
-            transform.position += transform.up * hookSpeed * Time.deltaTime;
+            transform.position += hookSpeed * Time.deltaTime * transform.up;
         }
 
         if (startCounter)
@@ -45,7 +52,7 @@ public class Hook : MonoBehaviour
             _counter += Time.deltaTime;
         }
 
-        if(_counter >= 0.7f)
+        if (_counter >= 0.7f)
         {
             GameManager.instance.isHookOnScene = false;
             Destroy(gameObject);

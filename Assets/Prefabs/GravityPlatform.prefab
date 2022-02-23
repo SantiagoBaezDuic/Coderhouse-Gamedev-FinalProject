@@ -204,12 +204,12 @@ GameObject:
   - component: {fileID: 4205490285584562208}
   - component: {fileID: 4205490285584562209}
   - component: {fileID: 4205490285584562212}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: GravityPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4205490285584562213
 Transform:

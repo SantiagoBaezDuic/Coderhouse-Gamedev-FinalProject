@@ -39,6 +39,12 @@ public class HookShot : MonoBehaviour
 
     [SerializeField] private float pullDelay = 0.1f;
 
+    [SerializeField] private ParticleSystem smoke;
+
+    [SerializeField] private float forceToPull = 10f;
+
+    private bool pulling = false;
+
     private void Awake()
     {
         var hookRef = hook.GetComponent<Hook>();
@@ -55,9 +61,22 @@ public class HookShot : MonoBehaviour
             {
                 Vector3 forceDir = (hit.point - hookSpawnPoint.position).normalized;
 
-                Instantiate(hook, hookSpawnPoint.position, Quaternion.LookRotation(forceDir));
-                isTraveling = true;
-                canShoot = false;
+                if (hit.collider.CompareTag("Hookable"))
+                {
+                    pulling = true;
+
+                    Instantiate(hook, hookSpawnPoint.position, Quaternion.LookRotation(forceDir));
+                    isTraveling = true;
+                    canShoot = false;
+                    smoke.Play();
+                } 
+                else
+                {
+                    Instantiate(hook, hookSpawnPoint.position, Quaternion.LookRotation(forceDir));
+                    isTraveling = true;
+                    canShoot = false;
+                    smoke.Play();
+                }
             }
         }
 
@@ -67,8 +86,31 @@ public class HookShot : MonoBehaviour
         {
             Vector3 forceDir = (hit.point - rb.transform.position).normalized;
 
-            rb.AddForce(forceDir * amount, ForceMode.Impulse);
-            rb.AddForce(Vector3.up * 0.5f, ForceMode.Impulse);
+            if (!pulling)
+            {
+                rb.AddForce(forceDir * amount, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * 0.5f, ForceMode.Impulse);
+
+                Rigidbody objectRB = hit.collider.GetComponentInParent<Rigidbody>();
+
+                if(objectRB != null)
+                {
+                    if (objectRB.gameObject.isStatic != true)
+                    {
+                        Vector3 pullDir = (hookSpawnPoint.position - hit.point).normalized;
+
+                        objectRB.AddForce(pullDir * forceToPull, ForceMode.Impulse);
+                    }
+                }
+            } else
+            {
+                Rigidbody objectRB = hit.collider.GetComponentInParent<Rigidbody>();
+
+                Vector3 pullDir = (hookSpawnPoint.position - hit.point).normalized;
+
+                objectRB.AddForce(pullDir * forceToPull, ForceMode.Impulse);
+            }
+
             isTraveling = false;
             _counter = 0;
         }
@@ -86,6 +128,7 @@ public class HookShot : MonoBehaviour
         if (_cooldownCounter >= cooldown)
         {
             canShoot = true;
+            pulling = false;
             _cooldownCounter = 0;
         }
 

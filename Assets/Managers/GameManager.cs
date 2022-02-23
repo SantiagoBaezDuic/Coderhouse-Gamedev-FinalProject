@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
 
     public int[] coinGoals;
 
+    public int totalCoins = 0;
+
+    public float totalTime = 0;
+
     private void Awake()
     {
         if (instance != null)
@@ -37,8 +41,8 @@ public class GameManager : MonoBehaviour
         coinGoals = new int[10];
 
         coinGoals[0] = 0;
-        coinGoals[1] = 25;
-        coinGoals[2] = 15;
+        coinGoals[1] = 20;
+        coinGoals[2] = 35;
     }
 
     private void Start()

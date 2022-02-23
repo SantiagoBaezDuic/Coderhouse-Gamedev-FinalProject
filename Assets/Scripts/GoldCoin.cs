@@ -9,18 +9,13 @@ public class GoldCoin : Pickupable
 
     private Collider playerCol;
 
-    [SerializeField] private AudioSource source;
-
-    [SerializeField] private AudioClip clip;
+    private AudioSource source;
 
     [SerializeField] private float volume = 0.5f;
 
-    private GameObject textDisplay;
-
     private void Awake()
     {
-        textDisplay = GameObject.FindGameObjectWithTag("CoinCounter");
-        var counterRef = textDisplay.GetComponent<CoinCounter>();
+        source = GetComponentInParent<AudioSource>();
         source.volume = volume;
         var playerRef = GameObject.Find("Player");
         playerCol = playerRef.GetComponent<Collider>();
@@ -30,13 +25,7 @@ public class GoldCoin : Pickupable
     {
         if (other == playerCol)
         {
-            source.PlayOneShot(clip);
-
-            Destroy(gameObject);
-
-            var counterRef = textDisplay.GetComponent<CoinCounter>();
-
-            counterRef.counter += data.value;
+            onPickup(source, data);
         }
     }
 }
